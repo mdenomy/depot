@@ -22,13 +22,3 @@ Product.create(title: 'CoffeeScript',
   image_url: 'cs.jpg',
   price: 60.00
 )
-
-Product.create(title: "Why's poignant guide to Ruby'",
-  description:
-    %{<p>
-      An entertaining and informative exploration into the world of Ruby,
-      as told by your spirit guide Why.
-      </p>},
-  image_url: 'why.jpg',
-  price: 0.00
-)
