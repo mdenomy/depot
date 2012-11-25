@@ -5,3 +5,19 @@
 require File.expand_path('../config/application', __FILE__)
 
 Depot::Application.load_tasks
+
+task :default => 'test:unit'
+
+namespace :test do
+  desc "Run all RSpec tests"
+  begin
+    require "rspec/core/rake_task"
+
+    desc "Run all examples"
+    RSpec::Core::RakeTask.new('unit') do |task|
+      task.pattern    = "spec/**/*_spec.rb"
+      task.rspec_opts = ["--color --format documentation"]
+    end
+  rescue LoadError
+  end
+end

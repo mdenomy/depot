@@ -21,11 +21,7 @@ describe "product" do
   end
 
   it "should require a positive price" do
-    product = Product.new(
-        title:        "Ruby Adventures",
-        description:  "The title says it all",
-        image_url:    "RubyAdventures.png"
-    )
+    product = create(:product)
 
     [-1, 0.009, 0].each do |price|
       product.price = price
@@ -36,11 +32,7 @@ describe "product" do
   end
 
   it "should support valid image formats" do
-    product = Product.new(
-        title:        "Ruby Adventures",
-        description:  "The title says it all",
-        price:        1.0
-    )
+    product = create(:product)
 
     valid_urls = %w( test.png test.jpg test.gif)
     valid_urls.each do |url|
@@ -55,11 +47,15 @@ describe "product" do
   end
 
   it "should require that titles are unique" do
-    product1 = new_product("Book", "Whatever", "image.png",1.0)
+    product1 = create(:product)
     product1.save
 
-    product2 = new_product("Book", "Whatever", "image.png",1.0)
-
+    product2 = Product.new(
+        title:        product1.title,
+        description:  "Whatever",
+        image_url:    "image.png",
+        price:        1.0
+    )
     assert !product2.save
     assert_equal "has already been taken",
                   product2.errors[:title].join('; ')
