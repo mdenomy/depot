@@ -18,4 +18,13 @@ describe "store/index" do
       assert_select "div.price_line span.price"
     end
   end
+
+  it "each product has a button to add products to cart" do
+    assign(:products, [stub_model(Product), stub_model(Product)])
+    render
+    assert_select "div.entry form.button_to", 2 do
+      assert_select "input", {value: "Add to cart"}
+    end
+
+  end
 end
