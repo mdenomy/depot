@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe StoreController do
 
+  attr_reader :store_access_count
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
@@ -21,6 +22,12 @@ describe StoreController do
       get 'index'
       assigns(:products).should eq([first, middle, last])
     end
-  end
 
+    it "counts the number of times the index action is hit" do
+      get 'index'
+      assigns(:store_access_count).should == 1
+      get 'index'
+      assigns(:store_access_count).should == 2
+    end
+  end
 end

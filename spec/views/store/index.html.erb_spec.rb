@@ -25,6 +25,13 @@ describe "store/index" do
     assert_select "div.entry form.button_to", 2 do
       assert_select "input", {value: "Add to cart"}
     end
+  end
 
+  it "shows the number of times that the store index has been accessed" do
+    assign(:products, [stub_model(Product), stub_model(Product)])
+    session[:store_index_count] = 1
+    assert_select "div.store_counter", 1
+    assert_select "div.store_counter",
+                  {text: "The catalog has been accessed 0 times"}
   end
 end
