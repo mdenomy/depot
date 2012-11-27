@@ -29,7 +29,7 @@ describe "store/index" do
 
   it "shows the number of times that the store index has been accessed" do
     assign(:products, [stub_model(Product), stub_model(Product)])
-    session[:store_index_count] = 1
+    render
     assert_select "div.store_counter", 1
     assert_select "div.store_counter",
                   {text: "The catalog has been accessed 0 times"}
