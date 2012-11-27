@@ -16,3 +16,6 @@
 
 # Ignore ide files
 /.idea
+
+# Ignore precompiled assets
+/public/assets
