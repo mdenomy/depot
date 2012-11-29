@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<% for item in @cart.line_items do %>
-    <div class="line_item"><%= item.product.title %></div>
-<% end %>
-
+<table>
+  <%= render(@cart.line_items) %>
+</table>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
