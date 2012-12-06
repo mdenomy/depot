@@ -24,5 +24,9 @@ describe LineItem do
     it "should have the correct product" do
       @line_item.product.should == @product
     end
+
+    it "should default to quantity of 1" do
+      @line_item.quantity == 1
+    end
   end
 end

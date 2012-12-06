@@ -48,6 +48,12 @@ describe CartsController do
       get :show, {:id => cart.to_param}, valid_session
       assigns(:cart).should eq(cart)
     end
+
+    it "redirects to root path on invalid cart id" do
+      get :show, {id: 99}, valid_session
+      response.should redirect_to root_path
+      flash[:notice].should =~ /invalid cart/i
+    end
   end
 
   describe "GET new" do
@@ -154,11 +160,19 @@ describe CartsController do
       }.to change(Cart, :count).by(-1)
     end
 
-    it "redirects to the carts list" do
+    it "redirects to the store path" do
       cart = Cart.create! valid_attributes
       delete :destroy, {:id => cart.to_param}, valid_session
-      response.should redirect_to(carts_url)
+      response.should redirect_to(store_index_path)
     end
+
+    it "clears the session variable" do
+      cart = Cart.create! valid_attributes
+      session[:cart_id] = cart.id
+      delete :destroy, {:id => cart.to_param}, valid_session
+      session[:cart_id].should be_nil
+    end
+
   end
 
 end

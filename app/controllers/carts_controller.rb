@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_filter :validate_cart, only: [:show]
+
   # GET /carts
   # GET /carts.json
   def index
@@ -74,10 +76,19 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
-
     respond_to do |format|
-      format.html { redirect_to carts_url }
+      format.html { redirect_to store_index_path }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def validate_cart
+    @cart = Cart.find_by_id(params[:id])
+    if @cart.nil?
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to root_path, notice: "Invalid cart"
     end
   end
 end
