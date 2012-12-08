@@ -19,6 +19,10 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'pry'
+  gem 'hirb'
+end
 group :test, :development do
   gem "capybara"
   gem "rspec-rails", "~> 2.0"

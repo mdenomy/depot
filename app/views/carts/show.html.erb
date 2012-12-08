@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
 <table>
   <%= render(@cart.line_items) %>
-</table>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td><%= number_to_currency(@cart.total) %></td>
+  </tr>
+ </table>
+
 
 <%= button_to 'Empty cart', @cart, method: :delete,
     data:  { confirm: 'Are you sure?'} %>

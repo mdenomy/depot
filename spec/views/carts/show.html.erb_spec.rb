@@ -13,7 +13,7 @@ describe "carts/show" do
 
   it "shows line items in cart" do
     render
-    assert_select 'tr', 2
+    assert_select 'tr.line_item', 2
   end
 
   it "shows quantity and title" do

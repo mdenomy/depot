@@ -28,5 +28,11 @@ describe LineItem do
     it "should default to quantity of 1" do
       @line_item.quantity == 1
     end
+
+    it "should calculate a subtotal" do
+      product = create(:product, price: 50)
+      line_item = create(:line_item, product: product, quantity: 2)
+      line_item.subtotal.should eq 100
+    end
   end
 end

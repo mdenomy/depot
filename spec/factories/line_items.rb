@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :line_item do
-    product_id 1
+    product
     cart_id 1
+    quantity  Random.rand(2..5)
   end
 end
