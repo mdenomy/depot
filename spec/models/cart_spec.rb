@@ -24,8 +24,8 @@ describe Cart do
     end
 
     it "should calculate the total" do
-      @line_item1 = create(:line_item, product: create(:product, title: "A", price: 33.33), quantity: 1)
-      @line_item2 = create(:line_item, product: create(:product, title: "B", price: 50.00), quantity: 2)
+      @line_item1 = create(:line_item, product: create(:product, price: 33.33), quantity: 1)
+      @line_item2 = create(:line_item, product: create(:product, price: 50.00), quantity: 2)
       @cart = create(:cart, line_items: [@line_item1, @line_item2])
       @cart.total.should eq 133.33
     end
