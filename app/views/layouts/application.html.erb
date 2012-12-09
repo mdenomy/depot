@@ -10,9 +10,10 @@
     <div id="banner">
         <%= image_tag("logo.png") %>
         <%= @page_title || "Pragmatic Bookshelf" %>
-    </div>
+     </div>
     <div id="columns">
       <div id="side">
+        <%= render @cart %>
         <ul>
           <li><%= link_to "Home", root_path %>
           <li><a href="#">Questions</a></li>

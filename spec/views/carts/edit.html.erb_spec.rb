@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "carts/edit" do
   before(:each) do
-    @cart = assign(:cart, stub_model(Cart))
+    @cart = assign(:cart, create(:cart))
   end
 
   it "renders the edit cart form" do

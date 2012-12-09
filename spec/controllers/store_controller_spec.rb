@@ -29,5 +29,11 @@ describe StoreController do
       get 'index'
       assigns(:store_access_count).should == 2
     end
+
+    it "has a cart" do
+       get 'index'
+       assigns(:cart).should_not be_nil
+     end
+
   end
 end

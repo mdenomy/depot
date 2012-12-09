@@ -4,6 +4,7 @@ class StoreController < ApplicationController
   def index
     increment_index_count
     @products = Product.order(:title)
+    @cart = current_cart
   end
 
   private

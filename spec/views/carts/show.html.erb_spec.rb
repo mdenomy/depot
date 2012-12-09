@@ -24,9 +24,22 @@ describe "carts/show" do
   end
 
   it "has a button to clear the cart" do
-    render
+    render :partial => "carts/cart",
+               :locals => {cart: @cart}
     assert_select "form.button_to" do
-      assert_select "input", {value: "Empty cart"}
+    assert_select "input", {value: "Empty cart"}
     end
+  end
+
+  it "does not show the cart if it is empty" do
+    render :partial => "carts/cart",
+                   :locals => {cart: create(:cart)}
+    assert_select 'tr.line_item', 0
+  end
+
+  it "shows the cart if it has items" do
+    render :partial => "carts/cart",
+               :locals => {cart: @cart}
+    assert_select 'tr.line_item', 2
   end
 end

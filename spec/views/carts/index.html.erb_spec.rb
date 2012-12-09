@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe "carts/index" do
   before(:each) do
-    assign(:carts, [
-      stub_model(Cart),
-      stub_model(Cart)
-    ])
+    assign(:carts, [create(:cart), create(:cart)])
   end
 
   it "renders a list of carts" do

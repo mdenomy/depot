@@ -20,4 +20,8 @@ class Cart < ActiveRecord::Base
     end
     sum
   end
+
+  def empty?
+    line_items.count == 0
+  end
 end

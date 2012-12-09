@@ -83,9 +83,9 @@ describe LineItemsController do
         assigns(:line_item).should be_persisted
       end
 
-      it "redirects to the created line_item" do
+      it "redirects to the store index" do
         post :create, {product_id: @product.id}, valid_session
-        response.should redirect_to(cart_path(assigns(:cart)))
+        response.should redirect_to(store_index_path)
       end
     end
 

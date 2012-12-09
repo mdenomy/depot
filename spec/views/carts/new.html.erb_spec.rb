@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "carts/new" do
   before(:each) do
-    assign(:cart, stub_model(Cart).as_new_record)
+    assign(:cart, create(:cart))
   end
 
   it "renders new cart form" do
