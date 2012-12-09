@@ -34,20 +34,6 @@ describe CartsController do
     {}
   end
 
-  describe "GET show" do
-    it "assigns the requested cart as @cart" do
-      cart = Cart.create! valid_attributes
-      get :show, {:id => cart.to_param}, valid_session
-      assigns(:cart).should eq(cart)
-    end
-
-    it "redirects to root path on invalid cart id" do
-      get :show, {id: 99}, valid_session
-      response.should redirect_to root_path
-      flash[:notice].should =~ /invalid cart/i
-    end
-  end
-
    describe "DELETE destroy" do
     it "destroys the requested cart" do
       cart = Cart.create! valid_attributes
