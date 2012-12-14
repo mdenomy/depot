@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
+    session[:store_index_count] = nil
     respond_to do |format|
       format.html { redirect_to store_index_path }
       format.json { head :no_content }

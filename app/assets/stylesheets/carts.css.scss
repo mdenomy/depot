@@ -1,8 +1,25 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.line_item {
-  font-weight: bold;
-  padding-left: 10px;
-  padding-bottom: 10px;
+
+
+.cart {
+  background: #9c9;
+  color: #141;
+
+  .header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 200%;
+    text-align: center;
+  }
+
+  .line_item {
+    padding-left: 10px;
+  }
+
+  .total {
+    font-weight: bold;
+  }
 }
