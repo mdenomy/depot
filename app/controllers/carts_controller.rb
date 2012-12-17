@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     @cart.destroy
     session[:store_index_count] = nil
     respond_to do |format|
-      format.html { redirect_to store_index_path }
+      format.html { redirect_to store_index_url }
       format.json { head :no_content }
     end
   end
