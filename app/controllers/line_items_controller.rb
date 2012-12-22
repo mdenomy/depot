@@ -27,13 +27,10 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_index_url,
-                      notice: 'Line item was successfully created.' }
+        format.html
         format.js
-        format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +43,6 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to line_items_url }
-      format.json { head :no_content }
     end
   end
 
